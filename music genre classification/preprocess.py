@@ -25,10 +25,9 @@ def save_mfcc(dataset_path,json_path,n_mfcc=13,n_fft=2048,hop_length=512,num_seg
     for i, (dirpath,dirnames,filenames) in enumerate(os.walk(dataset_path)):
     
         #ensure that we are not at the root level
-        if dirpath is not dataset_path:
+        if dirpath != dataset_path:
             #save the semantic label i.e. mappings
-            dirpath_components = os.path.basename(dirpath) #genre/blue => ["genre","blues"]
-            semantic_label = dirpath_components
+            semantic_label = os.path.basename(dirpath)
             data["mapping"].append(semantic_label)
             print("\nProcessing Genre:{}".format(semantic_label))
 
